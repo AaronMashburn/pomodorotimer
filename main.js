@@ -10,9 +10,9 @@ var workDuration = 25; // Default work duration in minutes
 const timeLeftEl = document.getElementById('time-left');
 const startStopBtn = document.getElementById('start-stop-btn');
 const resetBtn = document.getElementById('reset-btn');
-const pomodoroIntervalBtn = document.getElementById('pomodoro-interval-btn');
-const shortBreakIntervalBtn = document.getElementById('short-break-interval-btn');
-const longBreakIntervalBtn = document.getElementById('long-break-interval-btn');
+//const pomodoroIntervalBtn = document.getElementById('pomodoro-interval-btn');
+//const shortBreakIntervalBtn = document.getElementById('short-break-interval-btn');
+//const longBreakIntervalBtn = document.getElementById('long-break-interval-btn');
 const settingsBtn = document.getElementById('settings-btn');
 const settingsModal = document.getElementById('settings-modal');
 const closeModalBtn = document.querySelector('.close-btn');
@@ -22,23 +22,23 @@ const workDurationInput = document.getElementById('work-duration');
 const saveBtn = document.getElementById('save-btn');
 
 // Event listeners for interval buttons
-pomodoroIntervalBtn.addEventListener('click', () => {
-    currentInterval = 'pomodoro';
-    timeLeft = workDuration * 60;
-    updateTimeLeftTextContent();
-});
-
-shortBreakIntervalBtn.addEventListener('click', () => {
-    currentInterval = 'short-break';
-    timeLeft = 5 * 60;
-    updateTimeLeftTextContent();
-});
-
-longBreakIntervalBtn.addEventListener('click', () => {
-    currentInterval = 'long-break';
-    timeLeft = 10 * 60;
-    updateTimeLeftTextContent();
-});
+// pomodoroIntervalBtn.addEventListener('click', () => {
+//     currentInterval = 'pomodoro';
+//     timeLeft = workDuration * 60;
+//     updateTimeLeftTextContent();
+// });
+//
+// shortBreakIntervalBtn.addEventListener('click', () => {
+//     currentInterval = 'short-break';
+//     timeLeft = 5 * 60;
+//     updateTimeLeftTextContent();
+// });
+//
+// longBreakIntervalBtn.addEventListener('click', () => {
+//     currentInterval = 'long-break';
+//     timeLeft = 10 * 60;
+//     updateTimeLeftTextContent();
+// });
 
 // Event listener for start/stop button
 startStopBtn.addEventListener('click', () => {
@@ -113,18 +113,19 @@ function startTimer() {
         updateTimeLeftTextContent();
         if (timeLeft === 0) {
             clearInterval(timerInterval);
-            if (currentInterval === 'pomodoro') {
-                timeLeft = 5 * 60;
-                currentInterval = 'short-break';
-                startTimer();
-            } else if (currentInterval === 'short-break') {
-                timeLeft = 10 * 60;
-                currentInterval = 'long-break';
-                startTimer();
-            } else {
-                timeLeft = workDuration * 60;
-                currentInterval = 'pomodoro';
-            }
+            stopTimer();
+            // if (currentInterval === 'pomodoro') {
+            //     timeLeft = 5 * 60;
+            //     currentInterval = 'short-break';
+            //     startTimer();
+            // } else if (currentInterval === 'short-break') {
+            //     timeLeft = 10 * 60;
+            //     currentInterval = 'long-break';
+            //     startTimer();
+            // } else {
+            //     timeLeft = workDuration * 60;
+            //     currentInterval = 'pomodoro';
+            // }
         }
     }, 1000);
 }
